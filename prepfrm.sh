@@ -2,6 +2,8 @@
 o=png
 j=jpg
 r=frames
+cps="-strip -interlace Plane -quality 75% -sampling-factor 4:2:0"
+
 
 while read f
 do fex=`basename $f|cut -d"." -f2`
@@ -31,5 +33,5 @@ do fex=`basename $f|cut -d"." -f2`
              -transverse  -tile mpr:edge_top \
              -draw 'color 1,0 floodfill' -transpose -draw 'color 1,0 floodfill' \
              \
-           mpr:image -gravity center -composite    variantes/$fba-$fr1.$o 
+           mpr:image -gravity center -composite $cps variantes/$fba-$fr1.$j 
 done
